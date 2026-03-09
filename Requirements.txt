@@ -1,0 +1,7 @@
+# Ayaz64 Bash Tool Requirements
+
+# Base64 utility (comes by default in most Linux distros)
+base64
+
+# xclip to copy output to clipboard
+xclip
