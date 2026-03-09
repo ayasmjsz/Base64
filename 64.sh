@@ -10,19 +10,22 @@ cat << "EOF"
 /_/   \_\__, |\__,_|___/_| |_| |_|/ |___/___|
         |___/                   |__/         
 EOF
+
 echo "this tool just made for decode and encode base64 only"
 echo "1) Decode"
 echo "2) Encode"
-read opt
-if [ "$opt" == "1" ]; then
-	echo "Enter your code :"
-	read deinput
-	echo "Decoded : $(echo $deinput | base64 --decode)"
-elif [ "$opt" == "2" ]; then
-	echo "Enter your plaintext"
-	read plainput
-	echo "Encoded : $(echo $plainput | base64)"
-else
-	echo "Invalid Option"
-fi 
+read -p "Choose option: " opt
 
+if [ "$opt" == "1" ]; then
+    read -p "Enter your code: " deinput
+    result=$(echo "$deinput" | base64 --decode 2>/dev/null)
+    echo "Decoded : "
+    echo "$result" | tee >(xclip -selection clipboard)
+elif [ "$opt" == "2" ]; then
+    read -p "Enter your plaintext: " plainput
+    result=$(echo "$plainput" | base64)
+    echo "Encoded : "
+    echo "$result" | tee >(xclip -selection clipboard)
+else
+    echo "Invalid Option"
+fi
