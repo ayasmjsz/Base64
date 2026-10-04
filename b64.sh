@@ -20,12 +20,12 @@ if [ "$opt" == "1" ]; then
     read -p "Enter your code: " deinput
     result=$(echo "$deinput" | base64 --decode 2>/dev/null)
     echo "Decoded : "
-    echo "$result" | tee >(xclip -selection clipboard)
+    echo "$result" 
 elif [ "$opt" == "2" ]; then
     read -p "Enter your plaintext: " plainput
     result=$(echo "$plainput" | base64)
     echo "Encoded : "
-    echo "$result" | tee >(xclip -selection clipboard)
+    echo "$result" 
 else
     echo "Invalid Option"
 fi
